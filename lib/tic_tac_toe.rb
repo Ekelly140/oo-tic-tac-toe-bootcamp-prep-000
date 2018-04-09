@@ -100,7 +100,7 @@ end
 
 def over?
 
-  if won?(@board)  || draw?(@board) 
+  if won?  || draw?
   return true
   end
  return false
