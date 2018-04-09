@@ -41,8 +41,8 @@ def turn
          index = gets.strip
          index = input_to_index(index)
          end
-    move(index, current_player(board))
-    display_board(board)
+    move(index, current_player)
+    display_board
 end 
 
 def turn_count
