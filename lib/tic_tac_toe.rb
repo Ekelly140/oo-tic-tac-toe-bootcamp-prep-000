@@ -12,8 +12,8 @@ WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4
   end 
   
    def move(index, current_player = "X") 
-  @board[index.to_i] = token
-end
+    @board[index.to_i] = token
+   end
 
  def position_taken?(board, index)
    if (@board[@index] == "X" || @board[@index] == "O")
@@ -31,29 +31,18 @@ end
   end
  end 
  
- def turn
-    display_board
-    puts "Please enter 1-9:"
-    input = gets.strip
-    if !valid_move?(input)
-      turn
-    end
-    move(input, current_player)
-    display_board
-    end
  
- def turn
-  puts "Please enter 1-9:"
-   index = gets.strip
-   index = input_to_index(index)
-  current_player(board)
-  until valid_move?(board,index) == true
-  puts"Not a valid move. Please enter 1-9:"
-  @index = gets.strip
-  @index = input_to_index(index)
-  end
-  move(board,index,char)
-  display_board(board)
+def turn
+   puts "Please enter 1-9:"
+     index = gets.strip
+     index = input_to_index(index)
+       until valid_move?(index) == true
+         puts"Not a valid move. Please enter 1-9:"
+         index = gets.strip
+         index = input_to_index(index)
+         end
+    move(index, current_player(board))
+    display_board(board)
 end 
 
 def turn_count(board)
