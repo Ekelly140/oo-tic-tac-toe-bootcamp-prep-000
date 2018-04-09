@@ -94,7 +94,7 @@ def full?
 end
 
 def draw?
-   !won?(@board) &&full?(@board)   
+   !won? && full?  
 end 
 
 
