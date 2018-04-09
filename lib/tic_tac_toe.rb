@@ -53,12 +53,12 @@ def turn_count
     end
   end
     return count
-
 end
+
 def current_player
-  if turn_count(@board)% 2 == 0 
+  if turn_count% 2 == 0 
     return "X"
-  elsif turn_count(@board)% 2 == 1 
+  elsif turn_count% 2 == 1 
     return "O"
   else 
     return "Error"
