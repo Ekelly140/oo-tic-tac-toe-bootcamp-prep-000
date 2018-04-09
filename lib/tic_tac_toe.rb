@@ -23,8 +23,8 @@ WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4
    end
  end
  
-  def valid_move?(board, index)
-  if   @index.between?(0,8) && (@board[@index] == " " || @board[@index] == "")
+  def valid_move?(index)
+  if   index.between?(0,8) && (@board[index] == " " || @board[index] == "")
   return true 
   else 
   return false
@@ -45,9 +45,9 @@ def turn
     display_board(board)
 end 
 
-def turn_count(board)
+def turn_count
   count =0
-  board.each do |turn| 
+  @board.each do |turn| 
     if turn == "O" || turn == "X" 
       count += 1 
     end
@@ -55,26 +55,26 @@ def turn_count(board)
     return count
 
 end
-def current_player(board)
-  if turn_count(board)% 2 == 0 
+def current_player
+  if turn_count(@board)% 2 == 0 
     return "X"
-  elsif turn_count(board)% 2 == 1 
+  elsif turn_count(@board)% 2 == 1 
     return "O"
   else 
     return "Error"
   end
 end
 
-def won?(board)
+def won?
   WIN_COMBINATIONS.each do |place|
    
     win1 = place[0]
     win2 = place[1]
     win3 = place[2]
     
-    win_char1 = board[win1]
-    win_char2 = board[win2]
-    win_char3 = board[win3]
+    win_char1 = @board[win1]
+    win_char2 = @board[win2]
+    win_char3 = @board[win3]
     
     if (win_char1 == "X" && win_char2 =="X" && win_char3 == "X")||(win_char1 == "O" && win_char2 =="O" && win_char3 == "O")
       return place
@@ -84,8 +84,8 @@ def won?(board)
 end 
 
 
-def full?(board)
-    board.each do |check|
+def full?
+    @board.each do |check|
       if check == "" || check == " "  || check == nil
       return false
       end
@@ -93,42 +93,42 @@ def full?(board)
     return true
 end
 
-def draw?(board)
-   !won?(board) &&full?(board)   
+def draw?
+   !won?(@board) &&full?(@board)   
 end 
 
 
-def over?(board)
+def over?
 
-  if won?(board)  || draw?(board) 
+  if won?(@board)  || draw?(@board) 
   return true
   end
  return false
 end
 
-def winner(board)
-  if won?(board)
+def winner
+  if won?
   
-    if board[won?(board)[0]] == "X"
+    if @board[won?[0]] == "X"
       return "X"
-    elsif board[won?(board)[0]] == "O"
+    elsif @board[won?[0]] == "O"
     return "O"
     end 
   end
 end 
 
-def play(board) 
+def play 
  puts "Cat's Game!" 
- display_board(board)
- until over?(board) 
- turn_count(board)
- turn(board)
+ display_board
+ until over? 
+ turn_count
+ turn
  end
  
-if draw?(board) 
+if draw? 
        puts "Cats Game!"
  else
-       puts "Congratulations #{winner(board)}!"
+       puts "Congratulations #{winner}!"
  end
 end 
 
