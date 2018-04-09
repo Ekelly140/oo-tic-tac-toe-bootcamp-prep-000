@@ -116,6 +116,22 @@ def winner(board)
     end 
   end
 end 
+
+def play(board) 
+ puts "Cat's Game!" 
+ display_board(board)
+ until over?(board) 
+ turn_count(board)
+ turn(board)
+ end
+ 
+if draw?(board) 
+       puts "Cats Game!"
+ else
+       puts "Congratulations #{winner(board)}!"
+ end
+end 
+
  
 def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
