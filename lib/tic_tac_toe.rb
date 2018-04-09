@@ -64,6 +64,58 @@ def current_player(board)
     return "Error"
   end
 end
+
+def won?(board)
+  WIN_COMBINATIONS.each do |place|
+   
+    win1 = place[0]
+    win2 = place[1]
+    win3 = place[2]
+    
+    win_char1 = board[win1]
+    win_char2 = board[win2]
+    win_char3 = board[win3]
+    
+    if (win_char1 == "X" && win_char2 =="X" && win_char3 == "X")||(win_char1 == "O" && win_char2 =="O" && win_char3 == "O")
+      return place
+      end
+  end 
+  return false
+end 
+
+
+def full?(board)
+    board.each do |check|
+      if check == "" || check == " "  || check == nil
+      return false
+      end
+    end
+    return true
+end
+
+def draw?(board)
+   !won?(board) &&full?(board)   
+end 
+
+
+def over?(board)
+
+  if won?(board)  || draw?(board) 
+  return true
+  end
+ return false
+end
+
+def winner(board)
+  if won?(board)
+  
+    if board[won?(board)[0]] == "X"
+      return "X"
+    elsif board[won?(board)[0]] == "O"
+    return "O"
+    end 
+  end
+end 
  
 def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
