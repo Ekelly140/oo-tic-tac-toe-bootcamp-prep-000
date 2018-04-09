@@ -5,11 +5,11 @@ class TicTacToe
 
 WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
  
- def move(@board, @index, @char) 
+ def move(board, index, char) 
   board[@index.to_i] = @char
 end
  
- def position_taken?(@board, @index)
+ def position_taken?(board, index)
    if (@board[@index] == "X" || @board[@index] == "O")
      return true 
    else 
@@ -17,7 +17,7 @@ end
    end
  end
 
-  def input_to_index(@index)
+  def input_to_index(index)
    @index = index.to_i - 1
   end 
 
